@@ -13,7 +13,7 @@ CreateThread(function()
                     {
                         type = "client",
                         event = 'serrulata-shower:client:takeShower',
-                        icon = 'fa-solid fa-circle',
+                        icon = 'fas fa-shower',
                         label = 'Take Shower',
                         canInteract = function(entity, distance, coords, name)
                             if shower == false and distance < 1 then
