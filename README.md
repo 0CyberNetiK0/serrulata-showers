@@ -3,7 +3,7 @@
 # Different Frameworks
 
 * Download the framework you need!
-* [Serrulata-Showers-QB](https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg?w=2000)
+* [Serrulata-Showers-QB](https://github.com/Serrulata-Studios/serrulata-showers/tree/qb)
 
 * [Serrulata-Showers-OX](https://github.com/Serrulata-Studios/serrulata-showers/tree/ox)
 
