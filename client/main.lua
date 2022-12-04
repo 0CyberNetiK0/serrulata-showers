@@ -55,12 +55,18 @@ CreateThread(function()
     end
 end)
 RegisterNetEvent('serrulata-shower:client:takeShower', function()
-    if shower == false then
-        if Config.Framework == 'QB' then
+    local PlayerPed = plyPed
+    if GetEntityModel(plyPed) == -1667301416 then
+        sex = 'female'
+    else
+        sex = 'male'
+    end
+    if sex == 'male' then
+        if shower == false then
             shower = true
             FreezeEntityPosition((PlayerPedId()), true)
             local coords = GetEntityCoords(PlayerPedId())
-            progressBar()
+            maleProgressBar()
             while shower == true do
                 if not HasNamedPtfxAssetLoaded("core") then
                     RequestNamedPtfxAsset("core")
@@ -73,11 +79,13 @@ RegisterNetEvent('serrulata-shower:client:takeShower', function()
                 UseParticleFxAssetNextCall("core") 
                 Wait(3000)
             end
-        elseif Config.Framework == 'OX' then
+        end
+    elseif sex == 'female' then
+        if shower == false then
             shower = true
             FreezeEntityPosition((PlayerPedId()), true)
             local coords = GetEntityCoords(PlayerPedId())
-            progressBar()
+            femaleProgressBar()
             while shower == true do
                 if not HasNamedPtfxAssetLoaded("core") then
                     RequestNamedPtfxAsset("core")
@@ -94,55 +102,54 @@ RegisterNetEvent('serrulata-shower:client:takeShower', function()
     end
 end)
 
-function progressBar()
-    if Config.Framework == 'QB' then
-        if shower == true then
-            QBCore.Functions.Progressbar("shower", "Taking a shower", 9000, false, true, {
-                disableMovement = true,
-                disableCarMovement = true,
-                disableMouse = false,
-                disableCombat = true,
-            }, {
-                animDict = "anim@mp_yacht@shower@male@",
-                anim = "male_shower_enter_into_idle",
-                flags = 16,
-            }, {}, {}, function() -- Done
-                FreezeEntityPosition((PlayerPedId()), false)
-                ClearPedTasksImmediately(PlayerPedId()) 
-                StopParticleFxLooped(particles, 0) 
-                TriggerServerEvent('hud:server:RelieveStress', 25)
-                shower = false
-            end, function() -- Cancel
-                FreezeEntityPosition((PlayerPedId()), false)
-                ClearPedTasksImmediately(PlayerPedId()) 
-                StopParticleFxLooped(particles, 0) 
-                shower = false
-            end)
-        end
-    elseif Config.Framework == 'OX' then 
-        if shower == true then
-            QBCore.Functions.Progressbar("shower", "Taking a shower", 9000, false, true, {
-                disableMovement = true,
-                disableCarMovement = true,
-                disableMouse = false,
-                disableCombat = true,
-            }, {
-                animDict = "anim@mp_yacht@shower@male@",
-                anim = "male_shower_enter_into_idle",
-                flags = 16,
-            }, {}, {}, function() -- Done
-                FreezeEntityPosition((PlayerPedId()), false)
-                ClearPedTasksImmediately(PlayerPedId()) 
-                StopParticleFxLooped(particles, 0) 
-                TriggerServerEvent('hud:server:RelieveStress', 25)
-                shower = false
-            end, function() -- Cancel
-                FreezeEntityPosition((PlayerPedId()), false)
-                ClearPedTasksImmediately(PlayerPedId()) 
-                StopParticleFxLooped(particles, 0) 
-                shower = false
-            end)
-        end
+function maleProgressBar()
+    if shower == true then
+        QBCore.Functions.Progressbar("shower", "Taking a shower", 9000, false, true, {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        }, {
+            animDict = "anim@mp_yacht@shower@male@",
+            anim = "male_shower_enter_into_idle",
+            flags = 16,
+        }, {}, {}, function() -- Done
+            FreezeEntityPosition((PlayerPedId()), false)
+            ClearPedTasksImmediately(PlayerPedId()) 
+            StopParticleFxLooped(particles, 0) 
+            TriggerServerEvent('hud:server:RelieveStress', 25)
+            shower = false
+        end, function() -- Cancel
+            FreezeEntityPosition((PlayerPedId()), false)
+            ClearPedTasksImmediately(PlayerPedId()) 
+            StopParticleFxLooped(particles, 0) 
+            shower = false
+        end)
+    end
+end
+function femaleProgressBar()
+    if shower == true then
+        QBCore.Functions.Progressbar("shower", "Taking a shower", 9000, false, true, {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        }, {
+            animDict = "anim@mp_yacht@shower@female@",
+            anim = "shower_enter_into_idle",
+            flags = 16,
+        }, {}, {}, function() -- Done
+            FreezeEntityPosition((PlayerPedId()), false)
+            ClearPedTasksImmediately(PlayerPedId()) 
+            StopParticleFxLooped(particles, 0) 
+            TriggerServerEvent('hud:server:RelieveStress', 25)
+            shower = false
+        end, function() -- Cancel
+            FreezeEntityPosition((PlayerPedId()), false)
+            ClearPedTasksImmediately(PlayerPedId()) 
+            StopParticleFxLooped(particles, 0) 
+            shower = false
+        end)
     end
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
