@@ -10,7 +10,7 @@ ensure serrulata-showers
 ```
 
 # Dependencies
-* [qb-target](https://github.com/qbcore-framework/qb-target)
+* [qb-target](https://github.com/qbcore-framework/qb-target) or [ox-target](https://github.com/overextended/ox_target)
 
 # Preview 
 [Serrulata-Showers](https://streamable.com/kidv02) 
