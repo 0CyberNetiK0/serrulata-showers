@@ -3,11 +3,14 @@ use_experimental_fxv2_oal 'yes'
 lua54        'yes'
 game         'gta5'
 
-author 'Gale#4864'
+name 'Serrulata-Shower'
+description 'Serrulata-Shower'
+author 'Serrulata-Studios'
 version '1.0.0'
 
 shared_scripts {
     'config.lua',
+    '@ox_lib/init.lua'
 }
 
 client_script {
@@ -16,5 +19,3 @@ client_script {
     '@PolyZone/ComboZone.lua',
     'client/main.lua'
 }
-
-server_script 'server/*.lua'

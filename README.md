@@ -20,3 +20,5 @@ ensure serrulata-showers
 
 # Developer's
 #### - Gale#4864
+#### - MoneSuper#0001
+#### - CuzzeeTV#4169
