@@ -11,4 +11,10 @@ Config.Locations = {
         radius = 1.0,
         name = 'sphere1',
     },
+    --[[ Example for adding more
+    [2] = {
+        coords = vector3(-720.22, 333.45, 30.62), 
+        radius = 1.0,
+        name = 'sphere2',
+    },]]
 }
