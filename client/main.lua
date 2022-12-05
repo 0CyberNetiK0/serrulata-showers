@@ -5,9 +5,10 @@ local shower = false
 CreateThread(function()
     for i, v in pairs(Config.Locations) do
         local coords = Config.Locations[i].coords
+        local spherename = Config.Locations[i].name
         if Config.Framework == 'QB' then
-            exports['qb-target']:AddCircleZone("sphere1", vector3(coords.x, coords.y, coords.z), 0.6, {
-                name="sphere1",
+            exports['qb-target']:AddCircleZone(spherename, vector3(coords.x, coords.y, coords.z), 0.6, {
+                name = spherename,
                 useZ = true,
                 }, {
                     options = {
